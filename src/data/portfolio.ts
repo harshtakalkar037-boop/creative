@@ -85,7 +85,7 @@ export type Poster = {
   language: string;
 };
 
-export const posterFilters = ["All", "Marathi", "Hindi", "Quotes", "Events", "Product", "Carousel"] as const;
+export const posterFilters = ["All", "Marathi", "Hindi", "Quotes", "Events", "Product", "Carousel", "Poster Studies", "Graphics", "Photo Editing"] as const;
 
 export const posters: Poster[] = [
   { id: "marathi-satsang-01", title: "मनःशांतीचा सुंदर प्रवास", category: "Marathi", image: "/assets/posters/marathi-satsang-01.jpg", description: "A contemplative dawn-lake poster about returning to a calm breath.", language: "Marathi" },
