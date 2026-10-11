@@ -79,9 +79,11 @@ harsh-creative-portfolio/
 │   └── assets/
 │       ├── fonts/            # Bundled local font files
 │       ├── icons/            # Favicon
-│       ├── posters/          # 20 original poster JPGs
+│       ├── posters/          # Existing poster JPGs + 10 poster studies
+│       ├── graphics/         # Campaign and visual-study graphics
+│       ├── photo-editing/     # Uploaded image studies (HEIC retained separately)
 │       ├── projects/         # Local project-preview SVGs
-│       ├── videos/           # 4 MP4s, poster JPGs and WebVTT tracks
+│       ├── videos/           # 4 captioned MP4 reels + 7 uploaded final edits
 │       └── ...               # Original generated images + photo studies
 ├── scripts/                  # Asset validation + optional asset-generation scripts
 │   └── check-assets.mjs      # Checks literal local asset paths
