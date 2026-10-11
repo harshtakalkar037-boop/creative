@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 
+// Navigation is ordered to reflect portfolio priority: creative work (selected + video) first,
+// then design/photo, then technical/digital. This matches the homepage section order.
 const links = [
   { label: "Selected work", href: "#work" },
-  { label: "Creative", href: "#satsang" },
+  { label: "Video edits", href: "#video" },
+  { label: "Posters", href: "#satsang" },
+  { label: "Design & Photo", href: "#design" },
   { label: "Digital + AI", href: "#products" },
   { label: "About", href: "#about" },
 ];
