@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
-    "build": "tsc --noEmit && vite build",
+    "build": "npm run check:assets && tsc --noEmit && vite build",
+    "check:assets": "node scripts/check-assets.mjs",
     "preview": "vite preview --host 0.0.0.0",
     "assets:posters": "python3 scripts/generate_assets.py",
     "assets:videos": "python3 scripts/generate_videos.py",
