@@ -45,11 +45,11 @@ export function SelectedWorkSection({ onOpen }: { onOpen: (project: Project) => 
   return (
     <section className="section selected-work" id="work" aria-labelledby="work-heading">
       <div className="wrap">
-        <SectionIntro number="01" eyebrow="Original work, first" title="Selected work" headingId="work-heading" description="My strongest original work leads: poster systems, video, identity and art direction. Digital-product and assistive-AI concepts follow after. Everything is labelled as concept work where appropriate — no client commissions are implied." />
+        <SectionIntro number="01" eyebrow="Original work, first" title="Selected work" headingId="work-heading" description="My strongest original work — poster systems, video, identity and art direction. Each piece is original or art-directed for this portfolio; concept work is labelled as such." />
         <div className="project-grid">
           {selectedWork.map((project) => <ProjectCard key={project.id} project={project} onOpen={onOpen} />)}
         </div>
-        <div className="section-tail"><span>Creative work first — technical exploration after. Each card opens detail and download.</span><a className="text-link" href="#video">Watch the 7 original edits <ArrowUpRight size={15} aria-hidden="true" /></a></div>
+        <div className="section-tail"><span>Original work — each card opens detail and download.</span><a className="text-link" href="#video">Watch the 7 original edits <ArrowUpRight size={15} aria-hidden="true" /></a></div>
       </div>
     </section>
   );
@@ -74,47 +74,29 @@ export function VideoSection() {
   return (
     <section className="section video-section" id="video" aria-labelledby="video-heading">
       <div className="wrap">
-        <SectionIntro number="03" eyebrow="Motion & editing — your work first" title="Original edits, cut with intent." headingId="video-heading" description="Your 7 original final edits lead this section — each playable with native controls, playsInline, and a download fallback. Concept reels follow after, clearly separated. Titles for the 7 uploads stay neutral (Video edit 01–07) until you confirm specific titles; no client or campaign is invented." />
-
-        <div className="video-hierarchy-note reveal">
-          <span className="eyebrow"><span className="eyebrow-dot" />How this section is ordered</span>
-          <p><strong>First:</strong> 7 original final edits you supplied (MOV/MP4, 15–26s, up to 78 MB). <strong>Then:</strong> 4 self-initiated concept reels (2.5 MB avg, with open + WebVTT captions). Large originals use <code>preload="none"</code> to avoid downloading until you press play; concept reels use <code>preload="metadata"</code>.</p>
-        </div>
-
+        <SectionIntro number="03" eyebrow="Motion & editing" title="Original edits, cut with intent." headingId="video-heading" description="Your 7 original final edits first — each playable with controls, playsInline and a download fallback. Concept reels follow after. Titles for the 7 uploads stay neutral (Video edit 01–07) until you confirm them." />
         <div className="reel-group">
           <div className="reel-group-header">
-            <h3><span className="reel-group-index">A /</span> My original final edits — 7 videos</h3>
-            <span className="reel-group-meta">Prioritized · Original work · Neutral titles until confirmed</span>
+            <h3>My original edits — 7 videos</h3>
+            <span className="reel-group-meta">Original work · 15–26 s · H.264 where possible</span>
           </div>
           <div className="reel-list">
             {originalEdits.map((reel, index) => (
               <VideoPlayer key={reel.id} reel={reel} index={index} />
             ))}
           </div>
-          <div className="video-group-note">
-            <p>Heads-up: MOV files and the HEVC (H.265) MP4 need transcoding for reliable Chrome/Firefox playback. See the inline warnings on each player and <a href="#video-conversion">conversion notes below</a>. Original files are preserved untouched.</p>
-          </div>
         </div>
-
-        <div className="reel-group reel-group-concept">
+        <div className="reel-group">
           <div className="reel-group-header">
-            <h3><span className="reel-group-index">B /</span> Concept reels — 4 motion studies</h3>
-            <span className="reel-group-meta">Self-initiated · Not client work · H.264 + AAC + WebVTT</span>
+            <h3>Concept reels — 4 motion studies</h3>
+            <span className="reel-group-meta">Self-initiated · H.264 + AAC + WebVTT</span>
           </div>
           <div className="reel-list">
             {conceptReels.map((reel, index) => (
               <VideoPlayer key={reel.id} reel={reel} index={index} />
             ))}
           </div>
-          <p className="concept-note">Each concept reel includes a separate WebVTT caption track (Marathi/Hindi/English) plus burned-in open captions. Open captions are part of the picture; the captions menu is available in compatible players.</p>
-        </div>
-
-        <div id="video-conversion" className="video-conversion-note reveal">
-          <h4>Video playback & conversion note</h4>
-          <p><strong>What was found:</strong> 4 MOV files (<code>video-edit-01.mov</code>–<code>04.mov</code>) are HEVC (hvc1) with the moov atom after mdat (requires full download before playback) — many browsers cannot play HEVC in MOV. <code>video-edit-07.mp4</code> is also HEVC. <code>video-edit-06.mp4</code> has no audio track. All uploads are large (23–78 MB) and have no poster frames.</p>
-          <p><strong>What this build fixes in code:</strong> dedicated <code>VideoPlayer</code> with <code>controls</code>, <code>playsInline</code>, correct MIME types (<code>video/mp4</code> / <code>video/quicktime</code>), <code>preload="none"</code> for large uploads, single-playback guard (playing one pauses others), poster placeholder, file-size badges, inline HEVC warnings, and an error state with download fallback. Videos are not autoplayed and do not play simultaneously. Aspect is preserved with <code>object-fit: contain</code> on uploads so landscape footage letterboxes rather than crops.</p>
-          <p><strong>What still needs your action (ffmpeg):</strong> Transcode the 5 HEVC files to <code>H.264 (AVC, yuv420p) + AAC</code> MP4 with <code>-movflags +faststart</code> for progressive streaming. See <code>docs/VIDEO_CONVERSION.md</code> for exact commands. Poster frames can be generated at the same time (<code>-ss 1.2 -frames:v 1</code>).</p>
-          <p className="tiny-note">No file was renamed from .mov to .mp4 without re-encoding. Originals are kept verbatim under <code>public/assets/videos/</code>.</p>
+          <p className="concept-note">Concept reels include a WebVTT caption track plus burned-in open captions.</p>
         </div>
       </div>
     </section>
@@ -224,9 +206,9 @@ export function ProductsSection() {
   return (
     <section className="section products-section" id="products" aria-labelledby="products-heading">
       <div className="wrap">
-        <SectionIntro number="07" eyebrow="Web development & digital products" title="Useful ideas deserve thoughtful interfaces." headingId="products-heading" description="Product previews for the software and digital-product directions supplied for this portfolio. Two cards (GateMemory, NeuroSight) also appear as teaser cards in Selected Work — that is intentional (teaser → detail), not a duplicate rendering bug. The visual screens here are locally stored concept illustrations, not live product screenshots." />
+        <SectionIntro number="07" eyebrow="Web development & digital products" title="Useful ideas deserve thoughtful interfaces." headingId="products-heading" description="Product previews for the software and digital-product directions supplied for this portfolio. The visual screens here are locally stored concept illustrations, not live product screenshots." />
         <div className="digital-grid">{digitalProjects.map((project, index) => <DigitalProjectCard key={project.id} project={project} index={index} />)}</div>
-        <div className="project-link-note"><span className="project-link-icon" aria-hidden="true">↗</span><p>Public repositories and demo links are intentionally omitted until verified. Add confirmed URLs in <code>src/data/portfolio.ts</code> when ready. GateMemory & NeuroSight are the same concepts teased in Selected Work — this grid is their detailed view.</p></div>
+        <div className="project-link-note"><span className="project-link-icon" aria-hidden="true">↗</span><p>Public repositories and demo links are intentionally omitted until verified. Add confirmed URLs in <code>src/data/portfolio.ts</code> when ready.</p></div>
       </div>
     </section>
   );

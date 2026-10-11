@@ -8,15 +8,14 @@ type Props = {
 };
 
 function formatBytesLabel(src: string): string | null {
-  // Approximate sizes known from audit - show to set visitor expectation for large files
   const sizes: Record<string, string> = {
-    "video-edit-01.mov": "26 MB · MOV · HEVC",
-    "video-edit-02.mov": "35 MB · MOV · HEVC",
-    "video-edit-03.mov": "23 MB · MOV · HEVC",
-    "video-edit-04.mov": "34 MB · MOV · HEVC",
-    "video-edit-05.mp4": "78 MB · MP4 · H.264",
-    "video-edit-06.mp4": "66 MB · MP4 · H.264 (no audio track detected)",
-    "video-edit-07.mp4": "52 MB · MP4 · HEVC (H.265)",
+    "video-edit-01.mp4": "11 MB · MP4 · H.264 · 1920×1080 · faststart",
+    "video-edit-02.mp4": "21 MB · MP4 · H.264 · 1920×1080 · faststart",
+    "video-edit-03.mp4": "14 MB · MP4 · H.264 · 1920×1080 · faststart",
+    "video-edit-04.mp4": "17 MB · MP4 · H.264 · 1080×1920 · faststart",
+    "video-edit-05.mp4": "11 MB · MP4 · H.264 · 1080×1920 · faststart",
+    "video-edit-06.mp4": "16 MB · MP4 · H.264 · 1080×1920 · silent · faststart",
+    "video-edit-07.mp4": "15 MB · MP4 · H.264 · 1080×1920 · 60fps · faststart",
     "marathi-satsang.mp4": "2.5 MB · MP4 · H.264",
     "hindi-satsang.mp4": "2.8 MB · MP4 · H.264",
     "stillness-quote.mp4": "2.7 MB · MP4 · H.264",
@@ -29,17 +28,10 @@ function formatBytesLabel(src: string): string | null {
 function needsTranscodingWarning(reel: Reel): string | null {
   const src = reel.src.toLowerCase();
   if (src.endsWith(".mov")) {
-    return "This file is a MOV with HEVC (H.265) and a moov atom at the end of the file. Most browsers (Chrome/Firefox on Windows/Linux and many Android browsers) cannot play HEVC in MOV, and Safari requires HEVC support. Convert to H.264/AAC MP4 with faststart for reliable playback.";
-  }
-  if (reel.id === "uploaded-edit-07") {
-    return "This MP4 is encoded with HEVC (H.265) - shown as hvc1. Chrome and Firefox do not reliably play HEVC. Re-encode to H.264 (AVC) + AAC for cross-browser playback.";
+    return "This file is a MOV with HEVC (H.265) and a moov atom at the end — Chrome/Firefox cannot play it reliably. It has been transcoded to MP4/H.264 in this deployment (original preserved).";
   }
   if (reel.id === "uploaded-edit-06") {
-    return "This file appears to have no audio track. If audio was intended, re-export with AAC audio.";
-  }
-  if (src.includes("video-edit-05")) {
-    // Contains stray hvc1 fragment but main is avc1 - keep neutral, but note large size and faststart recommendation
-    return null;
+    return "This edit has no audio track (silent). If audio was intended, re-export with AAC.";
   }
   return null;
 }

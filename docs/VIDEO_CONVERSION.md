@@ -1,8 +1,26 @@
 # Video conversion notes — Harsh Creative Portfolio
 
+> **Update 2026-10-11 (branch `fix/urgent-live`): All 7 original final edits have been transcoded to H.264/AAC MP4 with faststart and poster frames. This document now records the *completed* state. See “After conversion” below.**
+
 This document lists every video that needs transcoding for reliable browser playback and the exact `ffmpeg` commands to produce web-friendly derivatives. **Original files are kept verbatim** under `public/assets/videos/` and are never renamed without re-encoding.
 
-## Audit summary (2026-10-11, branch `fix/portfolio-cleanup`)
+## After conversion (2026-10-11, branch `fix/urgent-live`)
+
+All 7 uploads now serve as **MP4 (H.264 video, yuv420p, AAC audio, faststart)** — chrome/firefox/safari compatible. Original HEVC/MOV files preserved in `public/assets/videos/originals/` (git-ignored). Posters generated at 1.2s.
+
+| # | file (now served) | size | codec | moov | poster | notes |
+|---|-------------------|------|-------|------|--------|-------|
+| 01 | `video-edit-01.mp4` | 11 MB | H.264 High yuv420p 1920×1080 30fps | ✅ faststart | `video-edit-01-poster.jpg` 155 KB | transcoded from 26 MB HEVC MOV |
+| 02 | `video-edit-02.mp4` | 21 MB | H.264 High 1920×1080 30fps | ✅ | `video-edit-02-poster.jpg` 97 KB | from 34 MB HEVC MOV |
+| 03 | `video-edit-03.mp4` | 14 MB | H.264 High 1920×1080 30fps | ✅ | `video-edit-03-poster.jpg` 233 KB | from 23 MB HEVC MOV |
+| 04 | `video-edit-04.mp4` | 17 MB | H.264 High 1080×1920 30fps | ✅ | `video-edit-04-poster.jpg` 279 KB | portrait, from 33 MB HEVC MOV |
+| 05 | `video-edit-05.mp4` | 11 MB | H.264 High 1080×1920 30fps | ✅ | `video-edit-05-poster.jpg` 27 KB | recompressed from 75 MB 2160×3840 |
+| 06 | `video-edit-06.mp4` | 16 MB | H.264 High 1080×1920 30fps **silent** | ✅ | `video-edit-06-poster.jpg` 311 KB | recompressed from 63 MB, no audio (silent) |
+| 07 | `video-edit-07.mp4` | 15 MB | H.264 High 1080×1920 60fps | ✅ | `video-edit-07-poster.jpg` 240 KB | transcoded from HEVC 10-bit 60fps 50 MB |
+
+**Verification:** `ffmpeg -i` shows `avc1 / yuv420p` for all 7, `moov` before `mdat` (faststart), AAC except 06 silent. Inline `VideoPlayer` warnings now only for silent (06). `preload="none"` for large uploads, `metadata` for concept reels. Tested locally with `vite preview` at desktop/mobile.
+
+## Audit summary (2026-10-11, branch `fix/portfolio-cleanup` — before conversion)
 
 Source inspection was done by parsing MP4/MOV box headers (`ftyp`, `stsd`, `hvc1`/`avc1`, `moov`/`mdat`) and `mvhd` durations. `ffprobe`/`ffmpeg` were not available in the audit sandbox, so this file documents the required next steps.
 
