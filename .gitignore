@@ -7,3 +7,6 @@ dist/
 !.env.example
 __pycache__/
 *.pyc
+# original video backups (HEVC/MOV) - preserved locally, not deployed
+public/assets/videos/originals/
+public/assets/videos/*.mov
