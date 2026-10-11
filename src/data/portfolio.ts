@@ -79,7 +79,7 @@ export const selectedWork: Project[] = [
 export type Poster = {
   id: string;
   title: string;
-  category: "Marathi" | "Hindi" | "Quotes" | "Events" | "Product" | "Carousel";
+  category: "Marathi" | "Hindi" | "Quotes" | "Events" | "Product" | "Carousel" | "Poster Studies" | "Graphics" | "Photo Editing";
   image: string;
   description: string;
   language: string;
@@ -108,6 +108,41 @@ export const posters: Poster[] = [
   { id: "carousel-01", title: "A gentler way to remember.", category: "Carousel", image: "/assets/posters/carousel-01.jpg", description: "Cover visual for a five-frame GateMemory product-story concept.", language: "English" },
   { id: "carousel-02", title: "Build for the moment it matters.", category: "Carousel", image: "/assets/posters/carousel-02.jpg", description: "Cover visual for a five-frame safety-first product narrative.", language: "English" },
   { id: "carousel-03", title: "Make complex feel clear.", category: "Carousel", image: "/assets/posters/carousel-03.jpg", description: "Cover visual for a four-frame applied-AI explainer concept.", language: "English" },
+  { id: "poster-study-01", title: "Poster study 01", category: "Poster Studies", image: "/assets/posters/poster-study-01.png", description: "Additional self-initiated poster design study. Presented as visual portfolio work without implying a client commission.", language: "Visual study" },
+  { id: "poster-study-02", title: "Poster study 02", category: "Poster Studies", image: "/assets/posters/poster-study-02.png", description: "Additional self-initiated poster design study. Presented as visual portfolio work without implying a client commission.", language: "Visual study" },
+  { id: "poster-study-03", title: "Poster study 03", category: "Poster Studies", image: "/assets/posters/poster-study-03.png", description: "Additional self-initiated poster design study. Presented as visual portfolio work without implying a client commission.", language: "Visual study" },
+  { id: "poster-study-04", title: "Poster study 04", category: "Poster Studies", image: "/assets/posters/poster-study-04.png", description: "Additional self-initiated poster design study. Presented as visual portfolio work without implying a client commission.", language: "Visual study" },
+  { id: "poster-study-05", title: "Poster study 05", category: "Poster Studies", image: "/assets/posters/poster-study-05.png", description: "Additional self-initiated poster design study. Presented as visual portfolio work without implying a client commission.", language: "Visual study" },
+  { id: "poster-study-06", title: "Poster study 06", category: "Poster Studies", image: "/assets/posters/poster-study-06.png", description: "Additional self-initiated poster design study. Presented as visual portfolio work without implying a client commission.", language: "Visual study" },
+  { id: "poster-study-07", title: "Poster study 07", category: "Poster Studies", image: "/assets/posters/poster-study-07.png", description: "Additional self-initiated poster design study. Presented as visual portfolio work without implying a client commission.", language: "Visual study" },
+  { id: "poster-study-08", title: "Poster study 08", category: "Poster Studies", image: "/assets/posters/poster-study-08.png", description: "Additional self-initiated poster design study. Presented as visual portfolio work without implying a client commission.", language: "Visual study" },
+  { id: "poster-study-09", title: "Poster study 09", category: "Poster Studies", image: "/assets/posters/poster-study-09.png", description: "Additional self-initiated poster design study. Presented as visual portfolio work without implying a client commission.", language: "Visual study" },
+  { id: "poster-study-10", title: "Poster study 10", category: "Poster Studies", image: "/assets/posters/poster-study-10.png", description: "Additional self-initiated poster design study. Presented as visual portfolio work without implying a client commission.", language: "Visual study" },
+  { id: "graphic-study-01", title: "Noir coffee campaign", category: "Graphics", image: "/assets/graphics/01-noir-coffee-campaign.png", description: "Self-initiated graphic design and campaign concept. Shown as portfolio study, not a claimed client commission.", language: "Visual study" },
+  { id: "graphic-study-02", title: "Form athletics campaign", category: "Graphics", image: "/assets/graphics/02-form-athletics-campaign.png", description: "Self-initiated graphic design and campaign concept. Shown as portfolio study, not a claimed client commission.", language: "Visual study" },
+  { id: "graphic-study-03", title: "Dew Theory skincare campaign", category: "Graphics", image: "/assets/graphics/03-dew-theory-skincare.png", description: "Self-initiated graphic design and campaign concept. Shown as portfolio study, not a claimed client commission.", language: "Visual study" },
+  { id: "graphic-study-04", title: "Nova Sound launch", category: "Graphics", image: "/assets/graphics/04-nova-sound-launch.png", description: "Self-initiated graphic design and campaign concept. Shown as portfolio study, not a claimed client commission.", language: "Visual study" },
+  { id: "graphic-study-05", title: "Offscript agency campaign", category: "Graphics", image: "/assets/graphics/05-offscript-agency.png", description: "Self-initiated graphic design and campaign concept. Shown as portfolio study, not a claimed client commission.", language: "Visual study" },
+  { id: "graphic-study-06", title: "Root Form fashion campaign", category: "Graphics", image: "/assets/graphics/06-root-form-fashion.png", description: "Self-initiated graphic design and campaign concept. Shown as portfolio study, not a claimed client commission.", language: "Visual study" },
+  { id: "graphic-study-07", title: "Marathi culture poster", category: "Graphics", image: "/assets/graphics/07-marathi-culture-poster.png", description: "Self-initiated graphic design and campaign concept. Shown as portfolio study, not a claimed client commission.", language: "Visual study" },
+  { id: "graphic-study-08", title: "Satsang devotional poster", category: "Graphics", image: "/assets/graphics/08-satsang-devotional-poster.png", description: "Self-initiated graphic design and campaign concept. Shown as portfolio study, not a claimed client commission.", language: "Visual study" },
+  { id: "graphic-study-09", title: "Beyond Miles travel campaign", category: "Graphics", image: "/assets/graphics/09-beyond-miles-travel.png", description: "Self-initiated graphic design and campaign concept. Shown as portfolio study, not a claimed client commission.", language: "Visual study" },
+  { id: "graphic-study-10", title: "Graphic study 10", category: "Graphics", image: "/assets/graphics/10-visual-study.png", description: "Self-initiated graphic design and campaign concept. Shown as portfolio study, not a claimed client commission.", language: "Visual study" },
+  { id: "graphic-study-11", title: "Graphic study 11", category: "Graphics", image: "/assets/graphics/11-visual-study.png", description: "Self-initiated graphic design and campaign concept. Shown as portfolio study, not a claimed client commission.", language: "Visual study" },
+  { id: "graphic-study-12", title: "Graphic study 12", category: "Graphics", image: "/assets/graphics/12-visual-study.png", description: "Self-initiated graphic design and campaign concept. Shown as portfolio study, not a claimed client commission.", language: "Visual study" },
+  { id: "photo-edit-study-01", title: "photo edit 01", category: "Photo Editing", image: "/assets/photo-editing/photo-edit-01.png", description: "Additional uploaded photo-editing or image-treatment study. Presented without claiming an undocumented retouching process.", language: "Image study" },
+  { id: "photo-edit-study-02", title: "photo edit 02", category: "Photo Editing", image: "/assets/photo-editing/photo-edit-02.jpeg", description: "Additional uploaded photo-editing or image-treatment study. Presented without claiming an undocumented retouching process.", language: "Image study" },
+  { id: "photo-edit-study-03", title: "photo edit 03", category: "Photo Editing", image: "/assets/photo-editing/photo-edit-03.jpeg", description: "Additional uploaded photo-editing or image-treatment study. Presented without claiming an undocumented retouching process.", language: "Image study" },
+  { id: "photo-edit-study-04", title: "photo edit 04", category: "Photo Editing", image: "/assets/photo-editing/photo-edit-04.jpeg", description: "Additional uploaded photo-editing or image-treatment study. Presented without claiming an undocumented retouching process.", language: "Image study" },
+  { id: "photo-edit-study-05", title: "photo edit 05", category: "Photo Editing", image: "/assets/photo-editing/photo-edit-05.jpeg", description: "Additional uploaded photo-editing or image-treatment study. Presented without claiming an undocumented retouching process.", language: "Image study" },
+  { id: "photo-edit-study-06", title: "photo edit 06", category: "Photo Editing", image: "/assets/photo-editing/photo-edit-06.jpeg", description: "Additional uploaded photo-editing or image-treatment study. Presented without claiming an undocumented retouching process.", language: "Image study" },
+  { id: "photo-edit-study-07", title: "photo edit 07", category: "Photo Editing", image: "/assets/photo-editing/photo-edit-07.jpeg", description: "Additional uploaded photo-editing or image-treatment study. Presented without claiming an undocumented retouching process.", language: "Image study" },
+  { id: "photo-edit-study-08", title: "photo edit 08", category: "Photo Editing", image: "/assets/photo-editing/photo-edit-08.jpeg", description: "Additional uploaded photo-editing or image-treatment study. Presented without claiming an undocumented retouching process.", language: "Image study" },
+  { id: "photo-edit-study-09", title: "photo edit 09", category: "Photo Editing", image: "/assets/photo-editing/photo-edit-09.jpeg", description: "Additional uploaded photo-editing or image-treatment study. Presented without claiming an undocumented retouching process.", language: "Image study" },
+  { id: "photo-edit-study-10", title: "photo edit 10", category: "Photo Editing", image: "/assets/photo-editing/photo-edit-10.jpeg", description: "Additional uploaded photo-editing or image-treatment study. Presented without claiming an undocumented retouching process.", language: "Image study" },
+  { id: "photo-edit-study-11", title: "photo edit 11", category: "Photo Editing", image: "/assets/photo-editing/photo-edit-11.png", description: "Additional uploaded photo-editing or image-treatment study. Presented without claiming an undocumented retouching process.", language: "Image study" },
+  { id: "photo-edit-study-12", title: "photo edit 12", category: "Photo Editing", image: "/assets/photo-editing/photo-edit-12.jpg", description: "Additional uploaded photo-editing or image-treatment study. Presented without claiming an undocumented retouching process.", language: "Image study" },
+  { id: "photo-edit-study-13", title: "photo edit 13", category: "Photo Editing", image: "/assets/photo-editing/photo-edit-13.jpg", description: "Additional uploaded photo-editing or image-treatment study. Presented without claiming an undocumented retouching process.", language: "Image study" },
 ];
 
 export type Reel = {
@@ -117,9 +152,9 @@ export type Reel = {
   duration: string;
   language: string;
   format: string;
-  poster: string;
+  poster?: string;
   src: string;
-  captions: string;
+  captions?: string;
   description: string;
   editNotes: string[];
 };
@@ -148,6 +183,48 @@ export const reels: Reel[] = [
     poster: "/assets/videos/startup-reel-poster.jpg", src: "/assets/videos/startup-reel.mp4", captions: "/assets/videos/startup-reel.vtt",
     description: "A self-initiated commercial-editing concept for an unnamed digital product, using concise kinetic messaging and product-focused imagery.",
     editNotes: ["Kinetic text beats", "Original ambient / pulse sound bed", "Product imagery and soft crossfades"],
+  },
+  {
+    id: "uploaded-edit-01", title: "Video edit 01", label: "Final video edit", duration: "See video", language: "See video", format: "Uploaded final edit · MOV",
+    src: "/assets/videos/video-edit-01.mov",
+    description: "Final video edit supplied for the creative portfolio. Add a specific title, language and context after reviewing the finished cut.",
+    editNotes: ["Final edited video", "Native playback controls", "Project details to be confirmed"],
+  },
+  {
+    id: "uploaded-edit-02", title: "Video edit 02", label: "Final video edit", duration: "See video", language: "See video", format: "Uploaded final edit · MOV",
+    src: "/assets/videos/video-edit-02.mov",
+    description: "Final video edit supplied for the creative portfolio. Add a specific title, language and context after reviewing the finished cut.",
+    editNotes: ["Final edited video", "Native playback controls", "Project details to be confirmed"],
+  },
+  {
+    id: "uploaded-edit-03", title: "Video edit 03", label: "Final video edit", duration: "See video", language: "See video", format: "Uploaded final edit · MOV",
+    src: "/assets/videos/video-edit-03.mov",
+    description: "Final video edit supplied for the creative portfolio. Add a specific title, language and context after reviewing the finished cut.",
+    editNotes: ["Final edited video", "Native playback controls", "Project details to be confirmed"],
+  },
+  {
+    id: "uploaded-edit-04", title: "Video edit 04", label: "Final video edit", duration: "See video", language: "See video", format: "Uploaded final edit · MOV",
+    src: "/assets/videos/video-edit-04.mov",
+    description: "Final video edit supplied for the creative portfolio. Add a specific title, language and context after reviewing the finished cut.",
+    editNotes: ["Final edited video", "Native playback controls", "Project details to be confirmed"],
+  },
+  {
+    id: "uploaded-edit-05", title: "Video edit 05", label: "Final video edit", duration: "See video", language: "See video", format: "Uploaded final edit · MP4",
+    src: "/assets/videos/video-edit-05.mp4",
+    description: "Final video edit supplied for the creative portfolio. Add a specific title, language and context after reviewing the finished cut.",
+    editNotes: ["Final edited video", "Native playback controls", "Project details to be confirmed"],
+  },
+  {
+    id: "uploaded-edit-06", title: "Video edit 06", label: "Final video edit", duration: "See video", language: "See video", format: "Uploaded final edit · MP4",
+    src: "/assets/videos/video-edit-06.mp4",
+    description: "Final video edit supplied for the creative portfolio. Add a specific title, language and context after reviewing the finished cut.",
+    editNotes: ["Final edited video", "Native playback controls", "Project details to be confirmed"],
+  },
+  {
+    id: "uploaded-edit-07", title: "Video edit 07", label: "Final video edit", duration: "See video", language: "See video", format: "Uploaded final edit · MP4",
+    src: "/assets/videos/video-edit-07.mp4",
+    description: "Final video edit supplied for the creative portfolio. Add a specific title, language and context after reviewing the finished cut.",
+    editNotes: ["Final edited video", "Native playback controls", "Project details to be confirmed"],
   },
 ];
 

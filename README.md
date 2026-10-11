@@ -26,13 +26,17 @@ The production-ready static website is written to `dist/`. Upload the contents o
 
 - Responsive one-page portfolio with semantic section landmarks, skip link, accessible navigation, reduced-motion support and keyboard-operable dialogs.
 - Selected-work cards with project detail dialogs, downloadable artwork and clear concept labels.
-- A filterable poster gallery with **20 locally stored 1080 × 1350 graphics**: 4 Marathi satsang posters, 4 Hindi satsang posters, 3 spiritual quote cards, 3 event concepts, 3 product posters and 3 carousel covers.
+- A filterable poster gallery with **30 original poster/quote/event/product/carousel graphics plus additional campaign and photo-editing studies**: 4 Marathi satsang posters, 4 Hindi satsang posters, 3 spiritual quote cards, 3 event concepts, 3 product posters and 3 carousel covers.
 - Correctly typeset Devanagari using a bundled Noto Sans Devanagari font. Poster text is rendered separately from the generated backgrounds; it is not AI-generated lettering.
-- Four real, playable 9:16 MP4 motion-graphics concept reels (H.264 video + AAC audio), each with responsive native playback controls, a poster frame, burned-in open captions, a sidecar WebVTT caption track and an MP4 download link.
+- Four original playable 9:16 MP4 motion-graphics concept reels plus seven additional uploaded final edits (H.264 video + AAC audio), each with responsive native playback controls, a poster frame, burned-in open captions, a sidecar WebVTT caption track and an MP4 download link.
 - Original, locally generated AI visual assets, brand-identity concept imagery, code-made product interface illustrations and a draggable photo-grade comparison.
 - Product previews for GateMemory, Study Sphere / PICT Notes, NeuroSight, SilentGuard and DisasterMesh. Project screens are illustrative concept previews; no unverified repository or demo URL is invented.
 - Skills, factual achievement labels, about and contact sections. Contact uses the supplied email, LinkedIn and GitHub URLs; there is deliberately no nonfunctional contact form or invented Instagram profile.
 - Local DM Sans, DM Serif Display and Noto Sans Devanagari fonts; custom favicon; Open Graph image; page metadata; custom 404 document.
+
+## Asset validation and production checks
+
+`npm run build` first runs `npm run check:assets`, which checks literal `/assets/...` paths used by source files against files in `public/`, then runs TypeScript and Vite production builds. A GitHub Actions workflow runs this check on pushes and pull requests.
 
 ## Asset-generation scripts (optional)
 
@@ -53,7 +57,7 @@ The four reels are original programmatic motion graphics made from local origina
 - **Selected work:** edit `selectedWork` in `src/data/portfolio.ts`. Supply an existing local image, a specific alt description, concise context and a truthful detail note. Concept projects should keep a concept label.
 - **Digital projects:** edit `digitalProjects` in the same data file. Add verified public URLs only after confirming them. The current previews intentionally avoid guessed links and unverified technical claims.
 - **Poster concepts:** place a local image in `public/assets/posters/`, add its metadata to `posters` in `src/data/portfolio.ts`, and include its category in the relevant `PosterGallery` section. The supplied poster-render script and data are in `scripts/generate_assets.py`.
-- **Videos:** place an H.264 MP4, poster image and UTF-8 WebVTT caption file in `public/assets/videos/`, then add a `Reel` entry in `src/data/portfolio.ts`. Keep native `controls`, `playsInline`, a poster frame and a caption track.
+- **Videos:** place an H.264 MP4, poster image and UTF-8 WebVTT caption file in `public/assets/videos/`. Prefer H.264/AAC MP4 for cross-browser playback; MOV support depends on browser and codec support. Then add a `Reel` entry in `src/data/portfolio.ts`. Keep native `controls`, `playsInline`, a poster frame and a caption track.
 - **Social/contact:** update the exact links in `ContactSection` in `src/sections/PortfolioSections.tsx`; also update the mailto link in `src/components/ProjectDialog.tsx` if the email changes.
 - **Design system:** edit `src/styles.css`; local fonts live under `public/assets/fonts/`.
 
@@ -79,7 +83,8 @@ harsh-creative-portfolio/
 │       ├── projects/         # Local project-preview SVGs
 │       ├── videos/           # 4 MP4s, poster JPGs and WebVTT tracks
 │       └── ...               # Original generated images + photo studies
-├── scripts/                  # Optional local asset-generation scripts
+├── scripts/                  # Asset validation + optional asset-generation scripts
+│   └── check-assets.mjs      # Checks literal local asset paths
 ├── src/
 │   ├── components/           # Navigation, project dialog, poster gallery
 │   ├── data/                 # Portfolio content and project metadata

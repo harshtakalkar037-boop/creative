@@ -71,14 +71,14 @@ export function VideoSection() {
   return (
     <section className="section video-section" id="video" aria-labelledby="video-heading">
       <div className="wrap">
-        <SectionIntro number="03" eyebrow="Motion & editing" title="Stories with a sense of rhythm." headingId="video-heading" description="Four original short-form concept edits, created as actual playable motion graphics with local H.264 video, synchronized open captions, optional WebVTT captions and original synthesized ambience." />
+        <SectionIntro number="03" eyebrow="Motion & editing" title="Stories with a sense of rhythm." headingId="video-heading" description="Eleven playable video samples: four locally produced concept reels with caption tracks, plus seven additional final edits. New uploads are labelled neutrally until their titles and project context are confirmed." />
         <div className="reel-list">
           {reels.map((reel, index) => (
             <article className={`reel-card reveal ${index % 2 ? "reel-card-reverse" : ""}`} key={reel.id}>
               <div className="reel-screen">
-                <video controls playsInline preload="metadata" poster={reel.poster} aria-label={`${reel.label} — ${reel.duration} playable concept video`}>
-                  <source src={reel.src} type="video/mp4" />
-                  <track kind="captions" src={reel.captions} srcLang={reel.language.includes("Marathi") ? "mr" : reel.language.includes("Hindi") ? "hi" : "en"} label={`${reel.language} captions`} />
+                <video controls playsInline preload="metadata" poster={reel.poster} aria-label={`${reel.label} — ${reel.title}`}>
+                  <source src={reel.src} type={reel.src.toLowerCase().endsWith(".mov") ? "video/quicktime" : "video/mp4"} />
+                  {reel.captions && <track kind="captions" src={reel.captions} srcLang={reel.language.includes("Marathi") ? "mr" : reel.language.includes("Hindi") ? "hi" : "en"} label={`${reel.language} captions`} />}
                   Your browser does not support this video. <a href={reel.src} download>Download the MP4 instead.</a>
                 </video>
                 <span className="reel-format">{reel.format}</span>
@@ -88,7 +88,7 @@ export function VideoSection() {
                 <h3>{reel.title}</h3>
                 <p>{reel.description}</p>
                 <ul className="reel-notes">{reel.editNotes.map((note) => <li key={note}>{note}</li>)}</ul>
-                <div className="reel-bottomline"><span>Self-initiated concept · not a client commission</span><a className="text-link" href={reel.src} download>Download MP4 <ArrowUpRight size={15} aria-hidden="true" /></a></div>
+                <div className="reel-bottomline"><span>{reel.id.startsWith("uploaded-edit-") ? "Uploaded final edit · details to be confirmed" : "Self-initiated concept · not a client commission"}</span><a className="text-link" href={reel.src} download>Download video <ArrowUpRight size={15} aria-hidden="true" /></a></div>
               </div>
             </article>
           ))}
@@ -117,7 +117,7 @@ export function DesignSection() {
           </div>
         </div>
         <div className="campaign-heading" id="design-gallery"><div><span className="eyebrow"><span className="eyebrow-dot" />Campaign & social</span><h3>Make the message<br /><em>easy to remember.</em></h3></div><p>Promotional poster concepts and carousel covers for digital products. Each one is clearly presented as an exploration rather than a client launch.</p></div>
-        <PosterGallery categories={["Product", "Carousel"]} galleryId="campaign-gallery" />
+        <PosterGallery categories={["Product", "Carousel", "Graphics", "Poster Studies"]} galleryId="campaign-gallery" />
       </div>
     </section>
   );
@@ -147,6 +147,12 @@ export function PhotoSection() {
             <div className="finish-list"><span><b>01</b> Tone & contrast</span><span><b>02</b> Warmth & highlight balance</span><span><b>03</b> Product-image direction</span></div>
             <p className="small-note">Self-initiated concept study. It is not presented as client retouching or a documentary before/after.</p>
           </div>
+        </div>
+        <div className="photo-extra-gallery">
+          <span className="eyebrow"><span className="eyebrow-dot" />Additional photo work</span>
+          <h3>More image studies.</h3>
+          <p className="small-note">Additional uploaded images are shown as studies; filenames are normalized and no unverified before/after claims are made.</p>
+          <PosterGallery categories={["Photo Editing"]} galleryId="photo-editing-gallery" />
         </div>
       </div>
     </section>
