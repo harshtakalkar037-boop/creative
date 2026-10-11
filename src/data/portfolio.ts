@@ -10,11 +10,24 @@ export type Project = {
   layout?: "wide" | "tall" | "standard";
 };
 
+// Selected work is intentionally ordered to prioritize original creative work (video, posters, identity, art)
+// before digital-product / technical concepts. This order defines the visual hierarchy on the homepage.
 export const selectedWork: Project[] = [
+  {
+    id: "brand-study",
+    title: "A quieter kind of identity",
+    category: "Graphic design · Brand study · Original work",
+    image: "/assets/brand-study.png",
+    imageAlt: "Warm ivory stationery and packaging with restrained terracotta and charcoal shapes",
+    description: "My original identity direction — paper, proportion and a small clay accent, explored across stationery and packaging.",
+    detail: "An original brand-identity study: an intentionally unnamed concept system for stationery, packaging and social applications. The visual language is built from warm paper, charcoal, terracotta and simple geometric forms. This is not a commissioned client identity. Shown first because it is fully original creative work.",
+    label: "Identity study",
+    layout: "tall",
+  },
   {
     id: "stillness-motion",
     title: "Stillness, in motion",
-    category: "Video editing · Satsang",
+    category: "Video editing · Satsang · Original concept",
     image: "/assets/videos/marathi-satsang-poster.jpg",
     imageAlt: "A warm dusk lake and temple silhouette beneath the Marathi headline मनःशांतीचा सुंदर प्रवास",
     description: "A gentle Marathi satsang invitation shaped as a vertical, captioned motion study.",
@@ -23,35 +36,34 @@ export const selectedWork: Project[] = [
     layout: "wide",
   },
   {
+    id: "satsang-print",
+    title: "Satsang, in print",
+    category: "Poster design · Marathi + Hindi · Original work",
+    image: "/assets/posters/hindi-satsang-01.jpg",
+    imageAlt: "Hindi satsang poster over a warm courtyard-inspired background with legible Devanagari typography",
+    description: "A devotional poster system with original art direction and carefully typeset Devanagari — one of my core creative threads.",
+    detail: "A collection of Marathi and Hindi poster concepts, quote cards and event announcements. Background artwork was created without embedded text; the final Devanagari copy was laid out separately using a local, licensed font. Every poster is marked as concept work. Uses hindi-satsang-01 here to avoid duplicating the marathi-satsang-01 thumbnail that opens the Devotional gallery below.",
+    label: "Poster series",
+  },
+  {
+    id: "machine-vision-study",
+    title: "Material for machine vision",
+    category: "AI-generated art · Visual study · Original direction",
+    image: "/assets/ai-art-study.png",
+    imageAlt: "Sculptural amber discs, black thread and paper relief arranged as an abstract machine-vision metaphor",
+    description: "An original AI-art direction study about perception, attention and the images systems learn to notice.",
+    detail: "An image-led experiment made for this portfolio with a tactile still-life direction rather than a generic neon-tech look. It is an AI-generated visual concept, not a photograph of a physical installation.",
+    label: "Visual experiment",
+  },
+  {
     id: "gate-memory",
     title: "GateMemory",
     category: "Digital product · Concept",
     image: "/assets/projects/gate-memory.svg",
     imageAlt: "Location-memory interface concept with a map, saved photo and voice-note panel",
     description: "A location-memory concept built around photos, voice notes and offline visual matching.",
-    detail: "A product concept exploring how a person might leave a visual or spoken breadcrumb and find it again later. The preview is an art-directed interface illustration; no live demo or repository link was provided for this portfolio build.",
+    detail: "A product concept exploring how a person might leave a visual or spoken breadcrumb and find it again later. The preview is an art-directed interface illustration; no live demo or repository link was provided for this portfolio build. Listed after creative work because the brief prioritizes original visual work.",
     label: "Product concept",
-  },
-  {
-    id: "brand-study",
-    title: "A quieter kind of identity",
-    category: "Graphic design · Brand study",
-    image: "/assets/brand-study.png",
-    imageAlt: "Warm ivory stationery and packaging with restrained terracotta and charcoal shapes",
-    description: "A self-initiated identity direction exploring paper, proportion and a small clay accent.",
-    detail: "An original brand-identity study: an intentionally unnamed concept system for stationery, packaging and social applications. The visual language is built from warm paper, charcoal, terracotta and simple geometric forms. This is not a commissioned client identity.",
-    label: "Identity study",
-    layout: "tall",
-  },
-  {
-    id: "satsang-print",
-    title: "Satsang, in print",
-    category: "Poster design · Marathi + Hindi",
-    image: "/assets/posters/marathi-satsang-01.jpg",
-    imageAlt: "Marathi satsang poster over a misty lake at dawn, with legible Devanagari typography",
-    description: "A devotional poster system with original art direction and carefully typeset Devanagari.",
-    detail: "A collection of Marathi and Hindi poster concepts, quote cards and event announcements. Background artwork was created without embedded text; the final Devanagari copy was laid out separately using a local, licensed font. Every poster is marked as concept work.",
-    label: "Poster series",
   },
   {
     id: "neurosight",
@@ -60,19 +72,9 @@ export const selectedWork: Project[] = [
     image: "/assets/projects/neurosight.svg",
     imageAlt: "Phone-first assistive vision interface concept showing a camera preview and a large audio cue control",
     description: "A phone-first assistive vision project, presented through a calm, accessibility-led interface study.",
-    detail: "A known project direction supplied for this portfolio. The mock interface illustrates a phone-first assistive vision experience; it does not claim measured accuracy, a specific model, or a production-ready assistive device. No public repository or demo URL was provided.",
+    detail: "A known project direction supplied for this portfolio. The mock interface illustrates a phone-first assistive vision experience; it does not claim measured accuracy, a specific model, or a production-ready assistive device. No public repository or demo URL was provided. Placed after creative work per portfolio priority.",
     label: "Technical project",
     layout: "tall",
-  },
-  {
-    id: "machine-vision-study",
-    title: "Material for machine vision",
-    category: "AI-generated art · Visual study",
-    image: "/assets/ai-art-study.png",
-    imageAlt: "Sculptural amber discs, black thread and paper relief arranged as an abstract machine-vision metaphor",
-    description: "An original AI-art direction study about perception, attention and the images systems learn to notice.",
-    detail: "An image-led experiment made for this portfolio with a tactile still-life direction rather than a generic neon-tech look. It is an AI-generated visual concept, not a photograph of a physical installation.",
-    label: "Visual experiment",
   },
 ];
 
@@ -159,7 +161,56 @@ export type Reel = {
   editNotes: string[];
 };
 
+// Reels are ordered to prioritize YOUR ORIGINAL FINAL EDITS (01–07) before the four self-initiated concept reels.
+// This ensures visitors see your real creative work first. The seven uploads are verbatim original files
+// (MOV/MP4 + HEVC/H.264 mix) — see docs/VIDEO_CONVERSION.md for transcoding guidance.
+// Existing file paths and casing are preserved; only the presentation order changes.
 export const reels: Reel[] = [
+  // ——— Your original final edits (priority, shown first) ———
+  {
+    id: "uploaded-edit-01", title: "Video edit 01", label: "Original edit", duration: "00:18", language: "See video", format: "Uploaded final edit · MOV · HEVC",
+    src: "/assets/videos/video-edit-01.mov",
+    description: "Original final edit — supplied directly for the portfolio. Title and language left neutral until you confirm them.",
+    editNotes: ["Original final edit (HEVC/MOV — see conversion note)", "Plays where HEVC/MOV is supported; MP4 transcode recommended", "Poster frame to be added on next export"],
+  },
+  {
+    id: "uploaded-edit-02", title: "Video edit 02", label: "Original edit", duration: "00:23", language: "See video", format: "Uploaded final edit · MOV · HEVC",
+    src: "/assets/videos/video-edit-02.mov",
+    description: "Original final edit — supplied directly for the portfolio. Title and language left neutral until you confirm them.",
+    editNotes: ["Original final edit (HEVC/MOV — see conversion note)", "Plays where HEVC/MOV is supported; MP4 transcode recommended", "Poster frame to be added on next export"],
+  },
+  {
+    id: "uploaded-edit-03", title: "Video edit 03", label: "Original edit", duration: "00:15", language: "See video", format: "Uploaded final edit · MOV · HEVC",
+    src: "/assets/videos/video-edit-03.mov",
+    description: "Original final edit — supplied directly for the portfolio. Title and language left neutral until you confirm them.",
+    editNotes: ["Original final edit (HEVC/MOV — see conversion note)", "Plays where HEVC/MOV is supported; MP4 transcode recommended", "Poster frame to be added on next export"],
+  },
+  {
+    id: "uploaded-edit-04", title: "Video edit 04", label: "Original edit", duration: "00:22", language: "See video", format: "Uploaded final edit · MOV · HEVC",
+    src: "/assets/videos/video-edit-04.mov",
+    description: "Original final edit — supplied directly for the portfolio. Title and language left neutral until you confirm them.",
+    editNotes: ["Original final edit (HEVC/MOV — see conversion note)", "Plays where HEVC/MOV is supported; MP4 transcode recommended", "Poster frame to be added on next export"],
+  },
+  {
+    id: "uploaded-edit-05", title: "Video edit 05", label: "Original edit", duration: "00:26", language: "See video", format: "Uploaded final edit · MP4 · H.264",
+    src: "/assets/videos/video-edit-05.mp4",
+    description: "Original final edit — supplied directly for the portfolio. Title and language left neutral until you confirm them.",
+    editNotes: ["Original final edit (H.264/AAC — widest compatibility)", "Preload set to none due to 78 MB size — plays on demand", "Poster frame to be added on next export"],
+  },
+  {
+    id: "uploaded-edit-06", title: "Video edit 06", label: "Original edit", duration: "00:21", language: "See video", format: "Uploaded final edit · MP4 · H.264",
+    src: "/assets/videos/video-edit-06.mp4",
+    description: "Original final edit — supplied directly for the portfolio. Title and language left neutral until you confirm them.",
+    editNotes: ["Original final edit (H.264 — no audio track detected)", "If audio was intended, re-export with AAC", "Poster frame to be added on next export"],
+  },
+  {
+    id: "uploaded-edit-07", title: "Video edit 07", label: "Original edit", duration: "00:15", language: "See video", format: "Uploaded final edit · MP4 · HEVC",
+    src: "/assets/videos/video-edit-07.mp4",
+    description: "Original final edit — supplied directly for the portfolio. Title and language left neutral until you confirm them.",
+    editNotes: ["Original final edit (HEVC/H.265 — Chrome/Firefox need H.264 transcode)", "Plays natively in Safari with HEVC support", "Poster frame to be added on next export"],
+  },
+
+  // ——— Self-initiated concept reels (shown after original edits) ———
   {
     id: "marathi-satsang", title: "A quieter invitation", label: "Marathi Satsang", duration: "00:24", language: "Marathi", format: "9:16 · 24 seconds",
     poster: "/assets/videos/marathi-satsang-poster.jpg", src: "/assets/videos/marathi-satsang.mp4", captions: "/assets/videos/marathi-satsang.vtt",
@@ -183,48 +234,6 @@ export const reels: Reel[] = [
     poster: "/assets/videos/startup-reel-poster.jpg", src: "/assets/videos/startup-reel.mp4", captions: "/assets/videos/startup-reel.vtt",
     description: "A self-initiated commercial-editing concept for an unnamed digital product, using concise kinetic messaging and product-focused imagery.",
     editNotes: ["Kinetic text beats", "Original ambient / pulse sound bed", "Product imagery and soft crossfades"],
-  },
-  {
-    id: "uploaded-edit-01", title: "Video edit 01", label: "Final video edit", duration: "See video", language: "See video", format: "Uploaded final edit · MOV",
-    src: "/assets/videos/video-edit-01.mov",
-    description: "Final video edit supplied for the creative portfolio. Add a specific title, language and context after reviewing the finished cut.",
-    editNotes: ["Final edited video", "Native playback controls", "Project details to be confirmed"],
-  },
-  {
-    id: "uploaded-edit-02", title: "Video edit 02", label: "Final video edit", duration: "See video", language: "See video", format: "Uploaded final edit · MOV",
-    src: "/assets/videos/video-edit-02.mov",
-    description: "Final video edit supplied for the creative portfolio. Add a specific title, language and context after reviewing the finished cut.",
-    editNotes: ["Final edited video", "Native playback controls", "Project details to be confirmed"],
-  },
-  {
-    id: "uploaded-edit-03", title: "Video edit 03", label: "Final video edit", duration: "See video", language: "See video", format: "Uploaded final edit · MOV",
-    src: "/assets/videos/video-edit-03.mov",
-    description: "Final video edit supplied for the creative portfolio. Add a specific title, language and context after reviewing the finished cut.",
-    editNotes: ["Final edited video", "Native playback controls", "Project details to be confirmed"],
-  },
-  {
-    id: "uploaded-edit-04", title: "Video edit 04", label: "Final video edit", duration: "See video", language: "See video", format: "Uploaded final edit · MOV",
-    src: "/assets/videos/video-edit-04.mov",
-    description: "Final video edit supplied for the creative portfolio. Add a specific title, language and context after reviewing the finished cut.",
-    editNotes: ["Final edited video", "Native playback controls", "Project details to be confirmed"],
-  },
-  {
-    id: "uploaded-edit-05", title: "Video edit 05", label: "Final video edit", duration: "See video", language: "See video", format: "Uploaded final edit · MP4",
-    src: "/assets/videos/video-edit-05.mp4",
-    description: "Final video edit supplied for the creative portfolio. Add a specific title, language and context after reviewing the finished cut.",
-    editNotes: ["Final edited video", "Native playback controls", "Project details to be confirmed"],
-  },
-  {
-    id: "uploaded-edit-06", title: "Video edit 06", label: "Final video edit", duration: "See video", language: "See video", format: "Uploaded final edit · MP4",
-    src: "/assets/videos/video-edit-06.mp4",
-    description: "Final video edit supplied for the creative portfolio. Add a specific title, language and context after reviewing the finished cut.",
-    editNotes: ["Final edited video", "Native playback controls", "Project details to be confirmed"],
-  },
-  {
-    id: "uploaded-edit-07", title: "Video edit 07", label: "Final video edit", duration: "See video", language: "See video", format: "Uploaded final edit · MP4",
-    src: "/assets/videos/video-edit-07.mp4",
-    description: "Final video edit supplied for the creative portfolio. Add a specific title, language and context after reviewing the finished cut.",
-    editNotes: ["Final edited video", "Native playback controls", "Project details to be confirmed"],
   },
 ];
 
