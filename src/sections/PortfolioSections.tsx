@@ -1,8 +1,9 @@
 import { useState, type CSSProperties } from "react";
-import { ArrowDownRight, ArrowRight, ArrowUpRight, Github, Linkedin, MoveUpRight, Play, Sparkles } from "lucide-react";
+import { ArrowDownRight, ArrowRight, ArrowUpRight, Github, Linkedin, MoveUpRight, Sparkles } from "lucide-react";
 import { digitalProjects, reels, selectedWork, skillGroups, achievements, type DigitalProject, type Project } from "../data/portfolio";
 import { PosterGallery } from "../components/PosterGallery";
 import { ProjectCard } from "../components/ProjectCard";
+import { VideoPlayer } from "../components/VideoPlayer";
 
 function SectionIntro({
   number, eyebrow, title, description, headingId, dark = false,
@@ -20,22 +21,22 @@ export function HeroSection() {
   return (
     <section className="hero wrap" id="top" aria-labelledby="hero-title">
       <div className="hero-copy">
-        <p className="eyebrow hero-eyebrow"><span className="eyebrow-dot" />Design <span aria-hidden="true">×</span> Story <span aria-hidden="true">×</span> Technology</p>
-        <h1 className="hero-title" id="hero-title">Creative visuals.<br /><em>Thoughtful technology.</em><br /><span>Stories that stay.</span></h1>
-        <p className="hero-lede">I’m Harsh — an Electronics & Telecommunication engineering student exploring visual design, video editing, web development and applied AI.</p>
+        <p className="eyebrow hero-eyebrow"><span className="eyebrow-dot" />Video editing <span aria-hidden="true">×</span> Poster & Graphic design <span aria-hidden="true">×</span> Photo editing</p>
+        <h1 className="hero-title" id="hero-title">Original edits.<br /><em>Considered design.</em><br /><span>Work that stays with you.</span></h1>
+        <p className="hero-lede">I’m Harsh — video editor and visual designer. I cut rhythm-driven edits, design Marathi/Hindi devotional and campaign posters, grade photographs, and explore product and AI interfaces with the same attention to story and craft. <strong>Original creative work first — technical explorations further down.</strong></p>
         <div className="hero-actions">
-          <a className="button button-dark" href="#work">View selected work <ArrowUpRight size={16} aria-hidden="true" /></a>
-          <a className="button button-quiet" href="#contact">Contact me <ArrowRight size={16} aria-hidden="true" /></a>
+          <a className="button button-dark" href="#video">Watch my edits <ArrowUpRight size={16} aria-hidden="true" /></a>
+          <a className="button button-quiet" href="#work">View selected work <ArrowRight size={16} aria-hidden="true" /></a>
         </div>
-        <div className="hero-note"><span className="hero-note-line" /><span>Made with curiosity, precision and a point of view.</span></div>
+        <div className="hero-note"><span className="hero-note-line" /><span>7 original final edits prioritized — concept reels and technical work follow.</span></div>
       </div>
       <figure className="hero-visual reveal">
         <img src="/assets/hero-studio.png" alt="A cinematic creative workspace with a camera, laptop, contact sheets and warm studio light" fetchPriority="high" />
         <span className="hero-visual-index">01 <span>/</span> FIELD NOTES</span>
-        <figcaption><span>Images, interfaces & ideas</span><span>Selected studies / 2026</span></figcaption>
+        <figcaption><span>Video · Posters · Graphics · Photo</span><span>Original work / 2026</span></figcaption>
         <span className="hero-stamp" aria-hidden="true">HT<br />—</span>
       </figure>
-      <div className="hero-footer"><span>Creative practice <i /> Digital products <i /> Applied AI</span><a href="#work" aria-label="Scroll to selected work">Scroll to explore <ArrowDownRight size={15} aria-hidden="true" /></a></div>
+      <div className="hero-footer"><span>Original edits <i /> Poster systems <i /> Graphic campaigns</span><a href="#work" aria-label="Scroll to selected work">Scroll to explore <ArrowDownRight size={15} aria-hidden="true" /></a></div>
     </section>
   );
 }
@@ -44,11 +45,11 @@ export function SelectedWorkSection({ onOpen }: { onOpen: (project: Project) => 
   return (
     <section className="section selected-work" id="work" aria-labelledby="work-heading">
       <div className="wrap">
-        <SectionIntro number="01" eyebrow="A considered mix" title="Selected work" headingId="work-heading" description="A cross-section of visual storytelling, devotional design, product thinking and applied technology. Concept work is labelled; nothing here implies a client commission." />
+        <SectionIntro number="01" eyebrow="Original work, first" title="Selected work" headingId="work-heading" description="My strongest original work — poster systems, video, identity and art direction. Each piece is original or art-directed for this portfolio; concept work is labelled as such." />
         <div className="project-grid">
           {selectedWork.map((project) => <ProjectCard key={project.id} project={project} onOpen={onOpen} />)}
         </div>
-        <div className="section-tail"><span>Creative work and technical work, in the same frame.</span><a className="text-link" href="#products">Explore digital projects <ArrowUpRight size={15} aria-hidden="true" /></a></div>
+        <div className="section-tail"><span>Original work — each card opens detail and download.</span><a className="text-link" href="#video">Watch the 7 original edits <ArrowUpRight size={15} aria-hidden="true" /></a></div>
       </div>
     </section>
   );
@@ -68,32 +69,35 @@ export function DevotionalSection() {
 }
 
 export function VideoSection() {
+  const originalEdits = reels.filter((r) => r.id.startsWith("uploaded-edit-"));
+  const conceptReels = reels.filter((r) => !r.id.startsWith("uploaded-edit-"));
   return (
     <section className="section video-section" id="video" aria-labelledby="video-heading">
       <div className="wrap">
-        <SectionIntro number="03" eyebrow="Motion & editing" title="Stories with a sense of rhythm." headingId="video-heading" description="Eleven playable video samples: four locally produced concept reels with caption tracks, plus seven additional final edits. New uploads are labelled neutrally until their titles and project context are confirmed." />
-        <div className="reel-list">
-          {reels.map((reel, index) => (
-            <article className={`reel-card reveal ${index % 2 ? "reel-card-reverse" : ""}`} key={reel.id}>
-              <div className="reel-screen">
-                <video controls playsInline preload="metadata" poster={reel.poster} aria-label={`${reel.label} — ${reel.title}`}>
-                  <source src={reel.src} type={reel.src.toLowerCase().endsWith(".mov") ? "video/quicktime" : "video/mp4"} />
-                  {reel.captions && <track kind="captions" src={reel.captions} srcLang={reel.language.includes("Marathi") ? "mr" : reel.language.includes("Hindi") ? "hi" : "en"} label={`${reel.language} captions`} />}
-                  Your browser does not support this video. <a href={reel.src} download>Download the MP4 instead.</a>
-                </video>
-                <span className="reel-format">{reel.format}</span>
-              </div>
-              <div className="reel-copy">
-                <div className="reel-topline"><span className="eyebrow"><span className="eyebrow-dot" />{reel.label}</span><span className="reel-duration">{reel.duration}</span></div>
-                <h3>{reel.title}</h3>
-                <p>{reel.description}</p>
-                <ul className="reel-notes">{reel.editNotes.map((note) => <li key={note}>{note}</li>)}</ul>
-                <div className="reel-bottomline"><span>{reel.id.startsWith("uploaded-edit-") ? "Uploaded final edit · details to be confirmed" : "Self-initiated concept · not a client commission"}</span><a className="text-link" href={reel.src} download>Download video <ArrowUpRight size={15} aria-hidden="true" /></a></div>
-              </div>
-            </article>
-          ))}
+        <SectionIntro number="03" eyebrow="Motion & editing" title="Original edits, cut with intent." headingId="video-heading" description="Your 7 original final edits first — each playable with controls, playsInline and a download fallback. Concept reels follow after. Titles for the 7 uploads stay neutral (Video edit 01–07) until you confirm them." />
+        <div className="reel-group">
+          <div className="reel-group-header">
+            <h3>My original edits — 7 videos</h3>
+            <span className="reel-group-meta">Original work · 15–26 s · H.264 where possible</span>
+          </div>
+          <div className="reel-list">
+            {originalEdits.map((reel, index) => (
+              <VideoPlayer key={reel.id} reel={reel} index={index} />
+            ))}
+          </div>
         </div>
-        <p className="concept-note">Each clip includes a separate caption track. Open captions are burned into the visual; the optional captions menu is available in compatible players.</p>
+        <div className="reel-group">
+          <div className="reel-group-header">
+            <h3>Concept reels — 4 motion studies</h3>
+            <span className="reel-group-meta">Self-initiated · H.264 + AAC + WebVTT</span>
+          </div>
+          <div className="reel-list">
+            {conceptReels.map((reel, index) => (
+              <VideoPlayer key={reel.id} reel={reel} index={index} />
+            ))}
+          </div>
+          <p className="concept-note">Concept reels include a WebVTT caption track plus burned-in open captions.</p>
+        </div>
       </div>
     </section>
   );

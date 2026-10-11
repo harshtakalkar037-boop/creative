@@ -48,8 +48,9 @@ export default function App() {
       <main id="main-content">
         <HeroSection />
         <SelectedWorkSection onOpen={setActiveProject} />
-        <DevotionalSection />
+        {/* Video comes immediately after Selected Work to prioritize your 7 original final edits */}
         <VideoSection />
+        <DevotionalSection />
         <DesignSection />
         <PhotoSection />
         <AIArtSection />
